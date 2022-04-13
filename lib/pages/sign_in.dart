@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:space/theme.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
+
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  late FToast fToast;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,34 +112,46 @@ class SignInPage extends StatelessWidget {
   }
 
   Widget passInput() {
-    return Container(
-      margin: const EdgeInsets.only(top: 24),
-      padding: const EdgeInsets.all(16),
-      width: 366,
-      decoration: BoxDecoration(
-        color: kWhiteGray,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextFormField(
-              obscureText: true,
-              decoration: InputDecoration.collapsed(
-                hintText: 'Password',
-                hintStyle: grayText.copyWith(
-                  fontSize: 16,
-                  fontWeight: semiBold,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(top: 24),
+          padding: const EdgeInsets.all(16),
+          width: 366,
+          decoration: BoxDecoration(
+            color: kWhiteGray,
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  obscureText: true,
+                  decoration: InputDecoration.collapsed(
+                    hintText: 'Password',
+                    hintStyle: grayText.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
                 ),
               ),
-            ),
+              const Icon(
+                LucideIcons.eye,
+                color: kGrayColor,
+              )
+            ],
           ),
-          const Icon(
-            LucideIcons.eye,
-            color: kGrayColor,
-          )
-        ],
-      ),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Text(
+          'Please check your password',
+          style: redText,
+        )
+      ],
     );
   }
 
@@ -166,7 +193,12 @@ class SignInPage extends StatelessWidget {
         top: 32,
       ),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          fToast.showToast(
+            child: errorToast(),
+            toastDuration: Duration(seconds: 2),
+          );
+        },
         style: TextButton.styleFrom(
           backgroundColor: kBlackColor,
           shape: RoundedRectangleBorder(
@@ -231,6 +263,23 @@ class SignInPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget errorToast() {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: kRedColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Text(
+        'Wrong Password, try again in one minutes',
+        style: whiteText.copyWith(
+          fontSize: 16,
+          fontWeight: semiBold,
+        ),
       ),
     );
   }
