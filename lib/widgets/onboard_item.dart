@@ -35,12 +35,15 @@ class OnboardCarousel extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Text(
-          subtitle,
-          style: grayText.copyWith(
-            fontSize: 18,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Text(
+            subtitle,
+            style: grayText.copyWith(
+              fontSize: 18,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
         ),
       ],
     );
