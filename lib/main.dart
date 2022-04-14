@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space/pages/homepage.dart';
 import 'package:space/pages/onboarding_page.dart';
 import 'package:space/pages/splash_page.dart';
 import 'package:space/pages/sign_in.dart';
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/onboard': (context) => const OnboardingPage(),
-        '/sign-in': (context) => const SignInPage()
+        '/sign-in': (context) => const SignInPage(),
+        '/home': (context) => const HomePage(),
       },
     );
   }

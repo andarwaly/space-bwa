@@ -12,6 +12,13 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   late FToast fToast;
+  final emailController = TextEditingController(text: '');
+  final passwordController = TextEditingController(text: '');
+
+  bool isShowPasswordError = false;
+  bool isRememberMe = false;
+  bool isLoading = false;
+  bool hidePass = true;
 
   @override
   void initState() {
@@ -24,7 +31,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 24,
         ),
         children: [
@@ -52,7 +59,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget title() {
     return Container(
       width: 160,
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         top: 84,
       ),
       child: Column(
@@ -101,6 +108,7 @@ class _SignInPageState extends State<SignInPage> {
         borderRadius: BorderRadius.circular(14),
       ),
       child: TextFormField(
+        controller: emailController,
         decoration: InputDecoration.collapsed(
             hintText: 'Email',
             hintStyle: grayText.copyWith(
@@ -127,7 +135,8 @@ class _SignInPageState extends State<SignInPage> {
             children: [
               Expanded(
                 child: TextFormField(
-                  obscureText: true,
+                  obscureText: hidePass,
+                  controller: passwordController,
                   decoration: InputDecoration.collapsed(
                     hintText: 'Password',
                     hintStyle: grayText.copyWith(
@@ -137,20 +146,36 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ),
               ),
-              const Icon(
-                LucideIcons.eye,
-                color: kGrayColor,
+              IconButton(
+                onPressed: () {
+                  if (hidePass = true) {
+                    setState(
+                      () {
+                        hidePass = false;
+                      },
+                    );
+                  } else {
+                    setState(() {
+                      hidePass = true;
+                    });
+                  }
+                },
+                icon: Icon(
+                  hidePass ? LucideIcons.eye : LucideIcons.eyeOff,
+                  color: kGrayColor,
+                ),
               )
             ],
           ),
         ),
-        const SizedBox(
-          height: 8,
-        ),
-        Text(
-          'Please check your password',
-          style: redText,
-        )
+        if (isShowPasswordError)
+          Container(
+            margin: const EdgeInsets.only(top: 8),
+            child: Text(
+              'Please check your password',
+              style: redText,
+            ),
+          )
       ],
     );
   }
@@ -166,8 +191,12 @@ class _SignInPageState extends State<SignInPage> {
             width: 20,
             height: 20,
             child: Checkbox(
-              value: false,
-              onChanged: (value) {},
+              value: isRememberMe,
+              onChanged: (value) {
+                setState(() {
+                  isRememberMe = value!;
+                });
+              },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4),
               ),
@@ -187,17 +216,34 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget loginButton() {
     return Container(
-      width: double.infinity,
       height: 56,
-      margin: const EdgeInsets.only(
-        top: 32,
-      ),
+      width: double.infinity,
+      margin: EdgeInsets.only(top: 32),
       child: TextButton(
         onPressed: () {
-          fToast.showToast(
-            child: errorToast(),
-            toastDuration: Duration(seconds: 2),
-          );
+          setState(() {
+            isLoading = true;
+          });
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isLoading = false;
+            });
+            if (passwordController.text != '123456') {
+              setState(() {
+                isShowPasswordError = true;
+              });
+              fToast.showToast(
+                child: errorToast(),
+                toastDuration: Duration(seconds: 2),
+                gravity: ToastGravity.BOTTOM,
+              );
+            } else {
+              setState(() {
+                isShowPasswordError = false;
+                Navigator.pushNamed(context, '/home');
+              });
+            }
+          });
         },
         style: TextButton.styleFrom(
           backgroundColor: kBlackColor,
@@ -205,13 +251,18 @@ class _SignInPageState extends State<SignInPage> {
             borderRadius: BorderRadius.circular(14),
           ),
         ),
-        child: Text(
-          'Login',
-          style: whiteText.copyWith(
-            fontSize: 18,
-            fontWeight: semiBold,
-          ),
-        ),
+        child: isLoading
+            ? CircularProgressIndicator(
+                color: kWhiteColor,
+                backgroundColor: kGrayColor,
+              )
+            : Text(
+                'Login',
+                style: whiteText.copyWith(
+                  fontSize: 18,
+                  fontWeight: semiBold,
+                ),
+              ),
       ),
     );
   }
