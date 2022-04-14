@@ -146,8 +146,8 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ),
               ),
-              IconButton(
-                onPressed: () {
+              InkWell(
+                onTap: () {
                   if (hidePass = true) {
                     setState(
                       () {
@@ -155,12 +155,14 @@ class _SignInPageState extends State<SignInPage> {
                       },
                     );
                   } else {
-                    setState(() {
-                      hidePass = true;
-                    });
+                    if (hidePass = false) {
+                      setState(() {
+                        hidePass = true;
+                      });
+                    }
                   }
                 },
-                icon: Icon(
+                child: Icon(
                   hidePass ? LucideIcons.eye : LucideIcons.eyeOff,
                   color: kGrayColor,
                 ),

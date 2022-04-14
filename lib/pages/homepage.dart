@@ -42,6 +42,44 @@ class HomePage extends StatelessWidget {
           backgroundColor: kWhiteColor,
         ),
       ),
+      body: Stack(
+        children: [
+          Image.asset('assets/images/pattern_bg.png'),
+          ListView(
+            children: [
+              //
+              Container(
+                margin: const EdgeInsets.only(top: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/logo_black.png',
+                      height: 44,
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      'Space',
+                      style: blackText.copyWith(fontSize: 20, fontWeight: bold),
+                    ),
+                    const Spacer(),
+                    InkWell(
+                      onTap: () {},
+                      child: const Icon(
+                        LucideIcons.shoppingCart,
+                        size: 30,
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
