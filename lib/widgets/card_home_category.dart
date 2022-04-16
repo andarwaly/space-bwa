@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:space/theme.dart';
 
-class HomeCategoryItem extends StatelessWidget {
+class CardHomeCategory extends StatelessWidget {
   final String titles;
   final String subtitles;
   final String imgUrl;
 
-  const HomeCategoryItem({
+  const CardHomeCategory({
     Key? key,
     required this.titles,
     required this.subtitles,

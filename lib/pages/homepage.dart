@@ -152,19 +152,40 @@ class _HomePageState extends State<HomePage> {
                   top: 24,
                 ),
                 child: CarouselSlider(
-                  items: const [
-                    HomeCategoryItem(
-                        titles: 'Super Gray Chair',
-                        subtitles: 'Chair',
-                        imgUrl: 'assets/images/kategori1.png'),
-                    HomeCategoryItem(
-                        titles: 'Minimalis Table',
-                        subtitles: 'Table',
-                        imgUrl: 'assets/images/kategori2.png'),
-                    HomeCategoryItem(
-                        titles: 'Handsome Blue Chair',
-                        subtitles: 'Chair',
-                        imgUrl: 'assets/images/kategori3.png')
+                  items: [
+                    InkWell(
+                      onTap: (() {
+                        setState(() {
+                          Navigator.pushNamed(context, '/category-page');
+                        });
+                      }),
+                      child: const CardHomeCategory(
+                          titles: 'Super Gray Chair',
+                          subtitles: 'Chair',
+                          imgUrl: 'assets/images/kategori1.png'),
+                    ),
+                    InkWell(
+                      onTap: (() {
+                        setState(() {
+                          Navigator.pushNamed(context, '/category-page');
+                        });
+                      }),
+                      child: const CardHomeCategory(
+                          titles: 'Minimalis Table',
+                          subtitles: 'Table',
+                          imgUrl: 'assets/images/kategori2.png'),
+                    ),
+                    InkWell(
+                      onTap: (() {
+                        setState(() {
+                          Navigator.pushNamed(context, '/category-page');
+                        });
+                      }),
+                      child: const CardHomeCategory(
+                          titles: 'Handsome Blue Chair',
+                          subtitles: 'Chair',
+                          imgUrl: 'assets/images/kategori3.png'),
+                    )
                   ],
                   options: CarouselOptions(
                     viewportFraction: 1,

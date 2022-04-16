@@ -85,7 +85,8 @@ class _SearchResultPageState extends State<SearchResultPage> {
                 width: 12,
               ),
               const Icon(
-                LucideIcons.filter,
+                LucideIcons.sliders,
+                size: 20,
                 color: kBlackColor,
               )
             ]),
