@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:space/theme.dart';
 import 'package:space/widgets/card_popular.dart';
-import 'package:space/widgets/home_category_card.dart';
+import 'package:space/widgets/card_home_category.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -87,33 +87,38 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               //* NOTE Search Bar
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 24,
-                  right: 24,
-                  left: 24,
-                ),
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(14),
-                  color: kWhiteColor,
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      'Search Furniture',
-                      style: grayText.copyWith(
-                        fontSize: 16,
-                        fontWeight: semiBold,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/search');
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    top: 24,
+                    right: 24,
+                    left: 24,
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    color: kWhiteColor,
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Search Furniture',
+                        style: grayText.copyWith(
+                          fontSize: 16,
+                          fontWeight: semiBold,
+                        ),
                       ),
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      LucideIcons.search,
-                      size: 24,
-                      color: kGrayColor,
-                    )
-                  ],
+                      const Spacer(),
+                      const Icon(
+                        LucideIcons.search,
+                        size: 24,
+                        color: kGrayColor,
+                      )
+                    ],
+                  ),
                 ),
               ),
               //* NOTE Title Category

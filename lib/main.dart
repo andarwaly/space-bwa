@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:space/pages/homepage.dart';
 import 'package:space/pages/onboarding_page.dart';
+import 'package:space/pages/search_page.dart';
+import 'package:space/pages/seearch_result_page.dart';
 import 'package:space/pages/splash_page.dart';
 import 'package:space/pages/sign_in.dart';
 
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
         '/onboard': (context) => const OnboardingPage(),
         '/sign-in': (context) => const SignInPage(),
         '/home': (context) => const HomePage(),
+        '/search': (context) => const SearchPage(),
+        '/search-result': (context) => const SearchResultPage(),
       },
     );
   }
