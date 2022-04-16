@@ -148,19 +148,11 @@ class _SignInPageState extends State<SignInPage> {
               ),
               InkWell(
                 onTap: () {
-                  if (hidePass = true) {
-                    setState(
-                      () {
-                        hidePass = false;
-                      },
-                    );
-                  } else {
-                    if (hidePass = false) {
-                      setState(() {
-                        hidePass = true;
-                      });
-                    }
-                  }
+                  setState(
+                    () {
+                      hidePass = !hidePass;
+                    },
+                  );
                 },
                 child: Icon(
                   hidePass ? LucideIcons.eye : LucideIcons.eyeOff,

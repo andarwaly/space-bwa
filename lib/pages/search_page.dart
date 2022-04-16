@@ -16,9 +16,9 @@ class SearchPage extends StatelessWidget {
           automaticallyImplyLeading: false,
           title: Row(children: [
             InkWell(
-              onTap: (() {
+              onTap: () {
                 Navigator.pop(context);
-              }),
+              },
               child: const Icon(
                 LucideIcons.chevronLeft,
                 color: kBlackColor,
