@@ -6,6 +6,7 @@ import 'package:space/pages/search_page.dart';
 import 'package:space/pages/seearch_result_page.dart';
 import 'package:space/pages/splash_page.dart';
 import 'package:space/pages/sign_in.dart';
+import 'package:space/pages/wishilist_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/search': (context) => const SearchPage(),
         '/search-result': (context) => const SearchResultPage(),
         '/category-page': (context) => const CateGoryPage(),
+        '/wishlist-page': (context) => const WishlistPage(),
       },
     );
   }

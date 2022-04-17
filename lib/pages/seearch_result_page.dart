@@ -31,6 +31,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
+          backgroundColor: kWhiteGray,
           appBar: AppBar(
             backgroundColor: kWhiteColor,
             elevation: 0,

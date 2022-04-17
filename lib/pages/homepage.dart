@@ -25,6 +25,13 @@ class _HomePageState extends State<HomePage> {
           topRight: Radius.circular(20),
         ),
         child: BottomNavigationBar(
+          onTap: (value) {
+            if (value == 1) {
+              setState(() {
+                Navigator.pushNamed(context, '/wishlist-page');
+              });
+            }
+          },
           selectedItemColor: kBlackColor,
           unselectedItemColor: kGrayColor,
           showUnselectedLabels: false,

@@ -11,6 +11,7 @@ class CateGoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kWhiteGray,
       appBar: AppBar(
         backgroundColor: kWhiteColor,
         elevation: 0,
