@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:space/pages/category_page.dart';
 import 'package:space/pages/homepage.dart';
 import 'package:space/pages/onboarding_page.dart';
+import 'package:space/pages/profile_page.dart';
 import 'package:space/pages/search_page.dart';
 import 'package:space/pages/seearch_result_page.dart';
 import 'package:space/pages/splash_page.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/search-result': (context) => const SearchResultPage(),
         '/category-page': (context) => const CateGoryPage(),
         '/wishlist-page': (context) => const WishlistPage(),
+        '/profile-page': (context) => const ProfilePage()
       },
     );
   }

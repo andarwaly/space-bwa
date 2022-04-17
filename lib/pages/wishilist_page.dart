@@ -85,9 +85,15 @@ class _WishlistPageState extends State<WishlistPage> {
               setState(() {
                 Navigator.pushNamed(context, '/home');
               });
+            } else {
+              if (value == 2) {
+                setState(() {
+                  Navigator.pushNamed(context, '/profile-page');
+                });
+              }
             }
           },
-          selectedItemColor: kBlackColor,
+          selectedItemColor: kBlueColor,
           unselectedItemColor: kGrayColor,
           showUnselectedLabels: false,
           showSelectedLabels: false,

@@ -10,6 +10,9 @@ const Color kWhiteColor = Color(0xffFFFFFF);
 const Color kRedColor = Color(0xffFF314A);
 const Color kYellowColor = Color(0xffFFBA00);
 const Color kBlueColor = Color(0xff2972FF);
+const Color kBlackBg = Color(0xff1F1D2B);
+const Color kBlackAccentBG = Color(0xff252836);
+const Color kBlackGrayBG = Color(0xff353440);
 
 FontWeight light = FontWeight.w300;
 FontWeight reguler = FontWeight.w400;
